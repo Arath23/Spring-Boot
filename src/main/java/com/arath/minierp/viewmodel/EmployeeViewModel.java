@@ -147,5 +147,22 @@ public void setFechaNacimientoTexto(String fechaNacimientoTexto) {
         }
     }
    
+    @Command
+    @NotifyChange({"empleados", "empleadoSeleccionado"})
+    public void eliminarEmpleado(){
+
+            if(empleadoSeleccionado == null){
+                return;
+            }
+
+            employeeService.eliminarEmpleado(
+                empleadoSeleccionado.getId());
+
+                empleados = employeeService.listarEmpleados();
+
+                empleadoSeleccionado = null;
+                Messagebox.show("Empleado eliminado.");
+
+            }
     
 }
