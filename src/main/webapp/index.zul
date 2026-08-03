@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <window title="Mini ERP"
         border="normal"
-        width="700px"
+        width="1500px"
         apply="org.zkoss.bind.BindComposer"
-        viewModel="@id('vm') @init('employeeViewModel')">
-
+        viewModel="@id('vm') @init('com.arath.minierp.viewmodel.EmployeeViewModel')"      > 
     <listbox model="@load(vm.empleados)">
 
         <listhead>
