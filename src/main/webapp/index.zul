@@ -4,7 +4,10 @@
         width="1500px"
         apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('com.arath.minierp.viewmodel.EmployeeViewModel')"      > 
-    <listbox model="@load(vm.empleados)">
+    <listbox model="@load(vm.empleados)"
+         selectedItem="@bind(vm.empleadoSeleccionado)">
+         
+
 
         <listhead>
             <listheader label="ID"/>
@@ -25,5 +28,9 @@
         </template>
 
     </listbox>
+    <separator/>
 
+<label value="Empleado seleccionado:"/>
+
+<label value="@load(vm.empleadoSeleccionado.nombre)"/>
 </window>

@@ -14,15 +14,25 @@ public class EmployeeViewModel {
 
     private List<EmployeeResponseDTO> empleados;
 
+    private EmployeeResponseDTO empleadoSeleccionado;
+
     @Init
     public void inicializar() {
-
         employeeService = SpringContext.getBean(EmployeeService.class);
-
         empleados = employeeService.listarEmpleados();
     }
 
     public List<EmployeeResponseDTO> getEmpleados() {
         return empleados;
+    }
+
+    public EmployeeResponseDTO getEmpleadoSeleccionado() {
+        return empleadoSeleccionado;
+    }
+
+    public void setEmpleadoSeleccionado(
+            EmployeeResponseDTO empleadoSeleccionado) {
+
+        this.empleadoSeleccionado = empleadoSeleccionado;
     }
 }
