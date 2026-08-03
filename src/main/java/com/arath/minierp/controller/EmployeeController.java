@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arath.minierp.dto.EmployeeRequestDTO;
 import com.arath.minierp.dto.EmployeeResponseDTO;
 import com.arath.minierp.model.Employee;
 import com.arath.minierp.service.EmployeeService;
@@ -35,9 +36,9 @@ public class EmployeeController {
       
     }
 
-    @PostMapping("/employees")
-    public Employee guardarEmpleado(@RequestBody Employee empleado){
-        return service.guardarEmpleado(empleado);
+ @PostMapping("/employees")
+public Employee guardarEmpleado(@RequestBody EmployeeRequestDTO dto) {
+    return service.guardarEmpleado(dto);
 }
     @DeleteMapping("/employees/{id}")
     public Employee eliminarEmpleado(@PathVariable int id) {

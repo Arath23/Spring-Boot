@@ -15,6 +15,8 @@ import com.arath.minierp.model.Employee.Puesto;
 public class EmployeeRepository{
 
     private final List<Employee> empleados = new ArrayList<>();
+            private int siguienteId = 1;
+
 
     public EmployeeRepository() {
 
@@ -49,7 +51,10 @@ public class EmployeeRepository{
             .findFirst();
     }
 
-    public void guardarEmpleado(Employee empleado) {
+   public void guardarEmpleado(Employee empleado) {
+    empleado.setId(siguienteId);
+    siguienteId++;
+
     empleados.add(empleado);
 }
     public Employee actualizarEmpleado(Employee empleado){

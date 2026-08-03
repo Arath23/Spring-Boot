@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.arath.minierp.dto.EmployeeRequestDTO;
 import com.arath.minierp.dto.EmployeeResponseDTO;
 import com.arath.minierp.exception.EmpleadoEncontradoException;
 import com.arath.minierp.exception.EmpleadoNoEncontradoException;
@@ -32,15 +33,19 @@ public class EmployeeService {
             "No existe un empleado con ese id" +" "+  id));
     }
 
-    public Employee guardarEmpleado(Employee empleado) {
-        if (repository.buscarEmpleadoPorId(empleado.getId()).isPresent()) {
-            throw new EmpleadoEncontradoException(
-                "Ya existe un empleado con id " + empleado.getId());
-        }
-        repository.guardarEmpleado(empleado);
-        return empleado;
+    public Employee guardarEmpleado(EmployeeRequestDTO dto) {
+
+    Employee empleado = convertirAEmployee(dto);
+
+    if (repository.buscarEmpleadoPorId(empleado.getId()).isPresent()) {
+        throw new EmpleadoEncontradoException(
+            "Ya existe un empleado con id " + empleado.getId());
     }
 
+    repository.guardarEmpleado(empleado);
+
+    return empleado;
+}
         public Employee actualizarEmpleado(Employee empleado){
         if (repository.buscarEmpleadoPorId(empleado.getId()).isEmpty()){
             throw new EmpleadoEncontradoException(
@@ -68,4 +73,18 @@ public class EmployeeService {
                 empleado.getPuesto().name()
             );
         }
+
+        private Employee convertirAEmployee(EmployeeRequestDTO dto) {
+
+         return new Employee(
+        0,
+        dto.getNombre(),
+        dto.getApellido(),
+        dto.getFechaNacimiento(),
+        dto.getEmail(),
+        dto.getTelefono(),
+        Employee.Puesto.valueOf(dto.getPuesto().toUpperCase()),
+        Employee.Genero.valueOf(dto.getGenero().toUpperCase())
+    );
+}
 }
