@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window title="Mini ERP"
+        border="normal"
+        width="700px"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('employeeViewModel')">
+
+    <listbox model="@load(vm.empleados)">
+
+        <listhead>
+            <listheader label="ID"/>
+            <listheader label="Nombre"/>
+            <listheader label="Apellido"/>
+            <listheader label="Email"/>
+            <listheader label="Puesto"/>
+        </listhead>
+
+        <template name="model">
+            <listitem>
+                <listcell label="@load(each.id)"/>
+                <listcell label="@load(each.nombre)"/>
+                <listcell label="@load(each.apellido)"/>
+                <listcell label="@load(each.email)"/>
+                <listcell label="@load(each.puesto)"/>
+            </listitem>
+        </template>
+
+    </listbox>
+
+</window>
