@@ -28,9 +28,88 @@
         </template>
 
     </listbox>
+    
+    <separator/>
+        
+    <grid>
+        
+        <rows>
+
+            <row>
+                <label value="Nombre"/>
+                <textbox value="@bind(vm.empleadoSeleccionado.nombre)"/>
+            </row>  
+
+            <row>
+                <label value="Apellido"/>
+                <textbox value="@bind(vm.empleadoSeleccionado.apellido)"/>
+            </row>
+
+            <row>
+                <label value="Email"/>
+                <textbox value="@bind(vm.empleadoSeleccionado.email)"/>
+            </row>
+            
+            <row>
+                <label value="Puesto"/>
+                <textbox value="@bind(vm.empleadoSeleccionado.puesto)"/>
+            </row>
+
+        </rows>
+
+    </grid>            
+
+    <button label="Actualizar"
+            onClick="@command('actualizarEmpleado')"/>
+
     <separator/>
 
-<label value="Empleado seleccionado:"/>
+    <label value= "Nuevo empleado"/>
 
-<label value="@load(vm.empleadoSeleccionado.nombre)"/>
+    <grid>
+         <rows>
+             <row>
+                 <label value="Nombre"/>
+                 <textbox value="@bind(vm.nuevoEmpleado.nombre)"/>
+             </row>
+
+             <row>
+                <label value="Apellido"/>
+                <textbox value="@bind(vm.nuevoEmpleado.apellido)"/>
+             </row>
+              
+             <row>
+                 <label value="Fecha de nacimiento"/>
+                 <textbox value="@bind(vm.fechaNacimientoTexto)"
+         placeholder="AAAA-MM-DD"/>
+             </row>   
+              
+             <row>
+                <label value="Email"/>
+                <textbox value="@bind(vm.nuevoEmpleado.email)"/>
+             </row>
+
+             <row>
+                <label value="Telefono"/>
+                 <textbox value="@bind(vm.nuevoEmpleado.telefono)"/>
+             </row>
+
+             <row>
+                  <label value="Puesto"/>
+                  <textbox value="@bind(vm.nuevoEmpleado.puesto)"/>
+             </row>
+
+             <row>
+                   <label value= "Genero"/>
+                   <textbox value="@bind(vm.nuevoEmpleado.genero)"/>
+             </row>
+
+         </rows>
+    </grid>
+
+    <button label="Guardar Empleado"
+            onClick="@command('guardarEmpleado')"/>                   
+
+                               
+
 </window>

@@ -12,7 +12,7 @@ public class EmployeeResponseDTO {
     public EmployeeResponseDTO() {
     }
 
-    public EmployeeResponseDTO(int id,
+    public EmployeeResponseDTO (int id,
                                String nombre,
                                String apellido,
                                String email,
